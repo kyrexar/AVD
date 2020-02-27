@@ -6,12 +6,16 @@ public class PlayerControl2D : MonoBehaviour
 {
 	public CharacterController2D controller;
 	public Animator animator;
-
 	public float runSpeed = 40f;
-
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
+	/*
+	public float Gravity2D = -30f;
+
+	private void Start(){
+		Physics2D.gravity = new Vector2(0, Gravity2D);
+	}*/
 
 	// Update is called once per frame
 	void Update()
@@ -41,6 +45,10 @@ public class PlayerControl2D : MonoBehaviour
 	public void OnLanding()
     {
 		animator.SetBool("IsJumping", false);
+	}
+
+	public void OnCrouching( bool isCrouching){
+		animator.SetBool("IsCrouching", isCrouching);
 	}
 
 	void FixedUpdate()
