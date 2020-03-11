@@ -128,8 +128,8 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 65536
-  speed: 10
-  time: 100
+  speed: 50
+  time: 2
 --- !u!198 &-5588049577689559545
 ParticleSystem:
   m_ObjectHideFlags: 0
