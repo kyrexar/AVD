@@ -128,6 +128,8 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 65536
+  Explosion: {fileID: 1221151116444036319, guid: d3b1d2374246095439bf5a85d2f775ae,
+    type: 3}
   speed: 50
   time: 2
 --- !u!198 &-5588049577689559545

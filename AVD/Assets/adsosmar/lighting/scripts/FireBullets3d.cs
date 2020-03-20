@@ -11,6 +11,7 @@ public class FireBullets3d : MonoBehaviour
     public GameObject Bullet3d;
     public Transform[] BulletPositions;
     public Animator[] GunsAnimators;
+    public AudioSource sonidoDisparo;
     void Start()
     {
         StartCoroutine(Fire());
@@ -26,6 +27,8 @@ public class FireBullets3d : MonoBehaviour
         i++;
         if (i >= BulletPositions.Length) i = 0;
         yield return new WaitForSeconds(frequency);
+
+        sonidoDisparo.Play();
             
         StartCoroutine(Fire());
     }
@@ -35,6 +38,7 @@ public class FireBullets3d : MonoBehaviour
         OnDisable();
         animator.SetBool("isDead",true);
         Destroy(gameObject,1f);
+        CamController.TurretNotSpawned=true;
     }
     private void OnDisable()
     {

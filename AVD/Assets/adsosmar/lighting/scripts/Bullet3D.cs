@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet3D : MonoBehaviour
 {
     public LayerMask layermask;
+    public GameObject Explosion;
     public float speed = 80f;
     public float time = 3f;
     private Rigidbody RB;
@@ -15,23 +16,10 @@ public class Bullet3D : MonoBehaviour
         RB.AddForce(transform.forward * speed, ForceMode.Impulse);
         Destroy(gameObject, time);
     }
-    public void Die()
+
+    private void OnCollisionEnter(Collision info)
     {
-        Destroy(gameObject);
-    }
-
-
-    private void OnTriggerEnter(Collider info)
-    {
-        Debug.Log(info.gameObject.name);
-        if //(info.gameObject.layer == Masks)
-            (layermask == (layermask | (1 << info.gameObject.layer)))
-        {
-            RB.Sleep();//avoid more interactions
-            GetComponent<Animator>().SetTrigger("Die");
-            //it plays the animation to make an explotion and die
-      
-        }
-
+            Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
+            Destroy(gameObject);
     }
 }
